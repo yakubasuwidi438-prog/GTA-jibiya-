@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GTA JIBIYA</title><style>
+body{margin:0;overflow:hidden;background:#69ad58}canvas{width:100%;height:100%}
+button{position:fixed;width:60px;height:60px;border:0;border-radius:50%;background:#000b;color:white;font-size:25px}
+#u{bottom:130px;left:70px}#d{bottom:10px;left:70px}#l{bottom:70px;left:10px}#r{bottom:70px;left:130px}
+</style></head><body><canvas id="c"></canvas>
+<button id="u">▲</button><button id="d">▼</button><button id="l">◀</button><button id="r">▶</button>
+<script>
+let c=document.getElementById('c'),x=c.getContext('2d'),p={x:200,y:200},k={};
+onresize=()=>{c.width=innerWidth;c.height=innerHeight};onresize();
+['u','d','l','r'].forEach((a,i)=>{let b=document.getElementById(a),z=['up','down','left','right'][i];b.ontouchstart=()=>k[z]=1;b.ontouchend=()=>k[z]=0});
+function f(){if(k.up)p.y-=4;if(k.down)p.y+=4;if(k.left)p.x-=4;if(k.right)p.x+=4;
+x.fillStyle='#69ad58';x.fillRect(0,0,c.width,c.height);x.fillStyle='#666';x.fillRect(0,c.height/2-60,c.width,120);x.fillRect(c.width/2-60,0,120,c.height);
+x.fillStyle='#ffd21a';x.beginPath();x.arc(c.width-100,100,30,0,7);x.fill();x.fillStyle='blue';x.beginPath();x.arc(p.x,p.y,18,0,7);x.fill();x.fillStyle='red';x.fillRect(c.width/2+90,c.height/2+80,80,40);requestAnimationFrame(f)}f();
+</script></body></html>
