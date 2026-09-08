@@ -1,10 +1,209 @@
- <!DOCTYPE html>
-<html>
+
+<!DOCTYPE html>
+<html lang="ha">
 <head>
-  <title>GTA Jibiya</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GTA Jibiya</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+header {
+    background: #111;
+    padding: 18px;
+    text-align: center;
+    border-bottom: 3px solid #f5c400;
+}
+
+header h1 {
+    color: #f5c400;
+    font-size: 32px;
+}
+
+nav {
+    margin-top: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 420px;
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.85)
+    );
+}
+
+.hero h2 {
+    font-size: 45px;
+    color: #f5c400;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.button {
+    display: inline-block;
+    background: #f5c400;
+    color: #000;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 45px 20px;
+    text-align: center;
+}
+
+section h2 {
+    color: #f5c400;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #181818;
+    width: 280px;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.card h3 {
+    color: #f5c400;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+footer {
+    background: #111;
+    text-align: center;
+    padding: 25px;
+    color: #aaa;
+    border-top: 2px solid #333;
+}
+
+@media (max-width: 600px) {
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 6px;
+    }
+}
+</style>
 </head>
+
 <body>
-  <h1>GTA Jibiya</h1>
-  <p>Barka da zuwa!</p>
+
+<header>
+    <h1>🚗 GTA JIBIYA</h1>
+
+    <nav>
+        <a href="#gida">Gida</a>
+        <a href="#missions">Missions</a>
+        <a href="#motoci">Motoci</a>
+        <a href="#game">Game</a>
+    </nav>
+</header>
+
+<div class="hero" id="gida">
+    <h2>GTA Jibiya</h2>
+    <p>Shiga duniyar mota, mission da adventure!</p>
+    <a class="button" href="#missions">Fara Mission</a>
+</div>
+
+<section id="missions">
+    <h2>🎯 Missions</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Mission 1</h3>
+            <p>Shiga mota ka kammala aikin farko cikin lokaci.</p>
+        </div>
+
+        <div class="card">
+            <h3>Mission 2</h3>
+            <p>Yi tafiya zuwa Jibiya ka kammala sabon aiki.</p>
+        </div>
+
+        <div class="card">
+            <h3>Mission 3</h3>
+            <p>Ka nuna kwarewarka wajen tuki da completing mission.</p>
+        </div>
+    </div>
+</section>
+
+<section id="motoci">
+    <h2>🏎️ Motoci</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🚘 Speed Car</h3>
+            <p>Mota mai saurin gudu domin racing.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚙 Off-Road</h3>
+            <p>Mota mai ƙarfi domin hanyoyin da ba su da kyau.</p>
+        </div>
+
+        <div class="card">
+            <h3>🏍️ Bike</h3>
+            <p>Babur mai sauri domin missions.</p>
+        </div>
+    </div>
+</section>
+
+<section id="game">
+    <h2>🎮 Game</h2>
+    <p style="font-size:20px; margin-bottom:20px;">
+        GTA Jibiya — wasa, mota da missions.
+    </p>
+
+    <a class="button" href="#gida">Komawa Sama</a>
+</section>
+
+<footer>
+    <p>© 2026 GTA Jibiya | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
