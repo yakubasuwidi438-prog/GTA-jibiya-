@@ -1,209 +1,199 @@
-
 <!DOCTYPE html>
 <html lang="ha">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GTA Jibiya</title>
+<title>GTA Jibiya Game</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#111;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  overflow:hidden;
+}
+h1{color:#ffd000;margin:10px}
+
+#game{
+  position:relative;
+  width:100%;
+  height:70vh;
+  max-width:500px;
+  margin:auto;
+  background:#555;
+  overflow:hidden;
+  border:3px solid #ffd000;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #0b0b0b;
-    color: white;
+.road{
+  position:absolute;
+  left:15%;
+  width:70%;
+  height:100%;
+  background:#333;
 }
 
-header {
-    background: #111;
-    padding: 18px;
-    text-align: center;
-    border-bottom: 3px solid #f5c400;
+.line{
+  position:absolute;
+  left:49%;
+  width:2%;
+  height:80px;
+  background:#fff;
 }
 
-header h1 {
-    color: #f5c400;
-    font-size: 32px;
+#car{
+  position:absolute;
+  bottom:30px;
+  left:45%;
+  width:55px;
+  height:90px;
+  background:red;
+  border-radius:12px;
+  border:4px solid white;
 }
 
-nav {
-    margin-top: 12px;
+#target{
+  position:absolute;
+  top:40px;
+  left:45%;
+  font-size:40px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: bold;
+#info{
+  font-size:18px;
+  margin:8px;
+  color:#ffd000;
 }
 
-.hero {
-    min-height: 420px;
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.85)
-    );
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:12px;
 }
 
-.hero h2 {
-    font-size: 45px;
-    color: #f5c400;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    font-size: 20px;
-    margin-bottom: 25px;
-}
-
-.button {
-    display: inline-block;
-    background: #f5c400;
-    color: #000;
-    padding: 14px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-section {
-    padding: 45px 20px;
-    text-align: center;
-}
-
-section h2 {
-    color: #f5c400;
-    margin-bottom: 25px;
-    font-size: 30px;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card {
-    background: #181818;
-    width: 280px;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #333;
-}
-
-.card h3 {
-    color: #f5c400;
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: #ddd;
-    line-height: 1.6;
-}
-
-footer {
-    background: #111;
-    text-align: center;
-    padding: 25px;
-    color: #aaa;
-    border-top: 2px solid #333;
-}
-
-@media (max-width: 600px) {
-    .hero h2 {
-        font-size: 34px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 6px;
-    }
+button{
+  width:75px;
+  height:60px;
+  font-size:25px;
+  border:0;
+  border-radius:12px;
+  background:#ffd000;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🚗 GTA JIBIYA</h1>
+<h1>🚗 GTA JIBIYA</h1>
 
-    <nav>
-        <a href="#gida">Gida</a>
-        <a href="#missions">Missions</a>
-        <a href="#motoci">Motoci</a>
-        <a href="#game">Game</a>
-    </nav>
-</header>
-
-<div class="hero" id="gida">
-    <h2>GTA Jibiya</h2>
-    <p>Shiga duniyar mota, mission da adventure!</p>
-    <a class="button" href="#missions">Fara Mission</a>
+<div id="info">
+  🎯 Mission: Ka kai wurin target! |
+  ⭐ Points: <span id="score">0</span>
 </div>
 
-<section id="missions">
-    <h2>🎯 Missions</h2>
+<div id="game">
 
-    <div class="cards">
-        <div class="card">
-            <h3>Mission 1</h3>
-            <p>Shiga mota ka kammala aikin farko cikin lokaci.</p>
-        </div>
+  <div class="road"></div>
 
-        <div class="card">
-            <h3>Mission 2</h3>
-            <p>Yi tafiya zuwa Jibiya ka kammala sabon aiki.</p>
-        </div>
+  <div class="line" style="top:0"></div>
+  <div class="line" style="top:160px"></div>
+  <div class="line" style="top:320px"></div>
+  <div class="line" style="top:480px"></div>
 
-        <div class="card">
-            <h3>Mission 3</h3>
-            <p>Ka nuna kwarewarka wajen tuki da completing mission.</p>
-        </div>
-    </div>
-</section>
+  <div id="target">🎯</div>
 
-<section id="motoci">
-    <h2>🏎️ Motoci</h2>
+  <div id="car"></div>
 
-    <div class="cards">
-        <div class="card">
-            <h3>🚘 Speed Car</h3>
-            <p>Mota mai saurin gudu domin racing.</p>
-        </div>
+</div>
 
-        <div class="card">
-            <h3>🚙 Off-Road</h3>
-            <p>Mota mai ƙarfi domin hanyoyin da ba su da kyau.</p>
-        </div>
+<div class="controls">
+  <button id="left">⬅️</button>
+  <button id="gas">⬆️</button>
+  <button id="right">➡️</button>
+</div>
 
-        <div class="card">
-            <h3>🏍️ Bike</h3>
-            <p>Babur mai sauri domin missions.</p>
-        </div>
-    </div>
-</section>
+<p>Riƙe ⬅️ ➡️ domin juya mota. Riƙe ⬆️ domin gudu.</p>
 
-<section id="game">
-    <h2>🎮 Game</h2>
-    <p style="font-size:20px; margin-bottom:20px;">
-        GTA Jibiya — wasa, mota da missions.
-    </p>
+<script>
+const car = document.getElementById("car");
+const target = document.getElementById("target");
+const scoreText = document.getElementById("score");
 
-    <a class="button" href="#gida">Komawa Sama</a>
-</section>
+let x = 45;
+let y = 30;
+let score = 0;
 
-<footer>
-    <p>© 2026 GTA Jibiya | All Rights Reserved</p>
-</footer>
+let left = false;
+let right = false;
+let gas = false;
+
+document.getElementById("left").ontouchstart=()=>left=true;
+document.getElementById("left").ontouchend=()=>left=false;
+
+document.getElementById("right").ontouchstart=()=>right=true;
+document.getElementById("right").ontouchend=()=>right=false;
+
+document.getElementById("gas").ontouchstart=()=>gas=true;
+document.getElementById("gas").ontouchend=()=>gas=false;
+
+document.getElementById("left").onmousedown=()=>left=true;
+document.getElementById("left").onmouseup=()=>left=false;
+
+document.getElementById("right").onmousedown=()=>right=true;
+document.getElementById("right").onmouseup=()=>right=false;
+
+document.getElementById("gas").onmousedown=()=>gas=true;
+document.getElementById("gas").onmouseup=()=>gas=false;
+
+function gameLoop(){
+
+  if(left) x -= 0.7;
+  if(right) x += 0.7;
+
+  if(gas) y += 1.5;
+
+  if(x < 16) x=16;
+  if(x > 78) x=78;
+
+  car.style.left=x+"%";
+
+  let targetTop = parseFloat(target.style.top || 40);
+
+  targetTop += gas ? 3 : 1;
+
+  if(targetTop > 500){
+    targetTop = 40;
+    target.style.left=(20+Math.random()*55)+"%";
+  }
+
+  target.style.top=targetTop+"px";
+
+  let carX=car.offsetLeft;
+  let targetX=target.offsetLeft;
+
+  if(
+    Math.abs(carX-targetX)<55 &&
+    targetTop>480
+  ){
+    score++;
+    scoreText.textContent=score;
+
+    targetTop=40;
+    target.style.left=(20+Math.random()*55)+"%";
+
+    alert("🎉 Mission Complete! +1 Point");
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
 
 </body>
 </html>
